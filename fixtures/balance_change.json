@@ -1,0 +1,16 @@
+{
+  "notification_id": "1",
+  "delivery_attempt": 1,
+  "created_at": 1386474927,
+  "type": "address",
+  "data": {
+    "network": "DOGE",
+    "address": "DLAznsPDLDRgsVcTFWRMYMG5uH6GddDtv8",
+    "balance_change": "68416.00000000",
+    "amount_sent": "0.00000000",
+    "amount_received": "68416.00000000",
+    "txid": "5f7e779f7600f54e528686e91d5891f3ae226ee907f461692519e549105f521c",
+    "confirmations": 1,
+    "is_green": false
+  }
+}
