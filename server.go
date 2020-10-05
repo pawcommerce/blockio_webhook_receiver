@@ -85,6 +85,7 @@ func HTTPNotificationHandler(h NotificationHandler, f string) fasthttp.RequestHa
 
     if (f != "" && n.Type != f) {
       ctx.SuccessString("text/plain", "OK")
+      return
     }
 
     if h(n) {
