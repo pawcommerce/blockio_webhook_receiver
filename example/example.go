@@ -18,5 +18,5 @@ func PrintNotification(n *recv.Notification) bool {
 }
 
 func main() {
-  log.Fatal(recv.New(":8083", "/", PrintNotification).SetFilter("address").DisableWhitelist().Start())
+  log.Fatal(recv.New(":8083", "/", PrintNotification).SetFilter("address").DisableAllowlist().Start())
 }

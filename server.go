@@ -12,7 +12,7 @@ type server struct {
   path string
   handler NotificationHandler
   filter string
-  enforceWhitelist bool
+  enforceAllowlist bool
 }
 
 func New(listen string, path string, handler NotificationHandler) *server {
@@ -24,13 +24,13 @@ func (s *server) SetFilter(noteType string) *server {
   return s
 }
 
-func (s *server) DisableWhitelist() *server {
-  s.enforceWhitelist = false
+func (s *server) DisableAllowlist() *server {
+  s.enforceAllowlist = false
   return s
 }
 
-func (s *server) EnableWhitelist() *server {
-  s.enforceWhitelist = true
+func (s *server) EnableAllowlist() *server {
+  s.enforceAllowlist = true
   return s
 }
 
@@ -39,14 +39,14 @@ func (s *server) Start() error {
 }
 
 func (s *server) authorize(ctx *fasthttp.RequestCtx) bool {
-  if !s.enforceWhitelist {
+  if !s.enforceAllowlist {
     return true
   }
 
   allowed := false
   ctx.Request.Header.VisitAll(func(key, value []byte) {
     if strings.ToLower(string(key)) == "x-forwarded-for" {
-      allowed = IsWhitelisted(string(value))
+      allowed = IsAllowlisted(string(value))
     }
   })
 
